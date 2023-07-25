@@ -22,8 +22,8 @@
 		<Link Type="BIOSBase" URL="https://download.lenovo.com/catalog/"></Link>
 	</Manufacturer>
 		<Manufacturer Name="Microsoft" >
-		<Link Type="XMLSource" URL="https://raw.githubusercontent.com/maurice-daly/DriverAutomationTool/master/Data/MSProducts.xml"></Link>
-		<Link Type="JSONSource" URL="https://raw.githubusercontent.com/OSDeploy/OSD/master/Catalogs/MicrosoftDriverPackCatalog.json"></Link>
+		<Link Type="XMLSource" URL="https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/MSProducts.xml"></Link>
+		<Link Type="JSONSource" URL="https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/OSDCatalogMicrosoftDriverPack.json"></Link>
 		<Link Type="BaseURL" URL="https://aka.ms/"></Link>
 		<Link Type="SurfaceDriverSupportURL" URL="https://support.microsoft.com/tr-tr/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120"></Link>
 	</Manufacturer>
