@@ -13348,9 +13348,9 @@ AABJRU5ErkJgggs='))
 	# Script Build Numbers
 	[version]$ScriptRelease = "7.2.2"
 	$ScriptBuildDate = "2022-12-31"
-	[version]$NewRelease = (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/maurice-daly/DriverAutomationTool/master/Data//DriverAutomationToolRev.txt" -UseBasicParsing).Content
-	$ReleaseNotesURL = "https://raw.githubusercontent.com/maurice-daly/DriverAutomationTool/master/Data/DriverAutomationToolNotes.txt"
-	$OEMLinksURL = "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/master/Data/OEMLinks.xml"
+	[version]$NewRelease = (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data//DriverAutomationToolRev.txt" -UseBasicParsing).Content
+	$ReleaseNotesURL = "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/DriverAutomationToolNotes.txt"
+	$OEMLinksURL = "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/OEMLinks.xml"
 	
 	# Proxy Validation Initial State
 	$global:ProxySettingsSet = $false
@@ -13506,14 +13506,14 @@ AABJRU5ErkJgggs='))
 		$OEMXMLPath = (Join-Path $global:SettingsDirectory -ChildPath "OEMLinks.xml")
 		if ((Test-Path -Path $OEMXMLPath) -eq $false) {
 			global:Write-LogEntry -Value "OEM Links: Downloading OEMLinks XML" -Severity 1 -SkipGuiLog $true
-			(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/master/Data/OEMLinks.xml" -UseBasicParsing).Content | Out-File -FilePath $OEMXMLPath
+			(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/OEMLinks.xml" -UseBasicParsing).Content | Out-File -FilePath $OEMXMLPath
 			[xml]$OEMLinks = Get-Content -Path $OEMXMLPath
 		} else {
-			[version]$OEMCurrenVersion = ([XML]((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/master/Data/OEMLinks.xml" -UseBasicParsing).Content)).OEM.Version
+			[version]$OEMCurrenVersion = ([XML]((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/OEMLinks.xml" -UseBasicParsing).Content)).OEM.Version
 			[version]$OEMDownloadedVersion = ([XML](Get-Content -Path $OEMXMLPath)).OEM.Version
 			if ($OEMDownloadedVersion -lt $OEMCurrenVersion) {
 				global:Write-LogEntry -Value "OEM Links: Downloading updated OEMLinks XML ($OEMCurrenVersion)" -Severity 1 -SkipGuiLog $true
-				(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/master/Data/OEMLinks.xml" -UseBasicParsing).Content | Out-File -FilePath $OEMXMLPath -Force
+				(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/selfhostMScatalog/Data/OEMLinks.xml" -UseBasicParsing).Content | Out-File -FilePath $OEMXMLPath -Force
 			}
 		}
 		global:Write-LogEntry -Value "OEM Links: Reading OEMLinks XML" -Severity 1 -SkipGuiLog $true
