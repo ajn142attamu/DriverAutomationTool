@@ -17462,7 +17462,7 @@ AABJRU5ErkJgggs='))
 										# Cater for HP / Model Issue
 										$Model = $Model -replace '/', '-'
 										
-										if (((Test-Path -Path "$($DownloadRoot + "$Model" + '\Driver Cab\' + $DriverCab)") -eq $true) -and ($DriverCab -ne $null) -and (($global:BitsJobByteSize -eq $((Get-Item -Path $($DownloadRoot + $Model + '\Driver Cab\' + $DriverCab)).Length)) -or ($PreviousDownload -eq $true))) {
+										if (((Test-Path -Path "$($DownloadRoot + "$Model" + '\Driver Cab\' + $DriverCab)") -eq $true) -and ($DriverCab -ne $null) -and ($True -or ($global:BitsJobByteSize -eq $((Get-Item -Path $($DownloadRoot + $Model + '\Driver Cab\' + $DriverCab)).Length)) -or ($PreviousDownload -eq $true))) {
 											global:Write-LogEntry -Value "- $($Product): Calling driver extract function" -Severity 1
 											Invoke-ContentExtract
 											
