@@ -23,11 +23,7 @@
 	</Manufacturer>
 		<Manufacturer Name="Microsoft" >
 		<Link Type="XMLSource" URL="https://raw.githubusercontent.com/ajn142attamu/DriverAutomationTool/master/Data/MSProducts.xml"></Link>
-<<<<<<< HEAD
 		<Link Type="JSONSource" URL="https://raw.githubusercontent.com/ajn142attamu/OSD/master/Catalogs/MicrosoftDriverPackCatalog.json"></Link>
-=======
-		<Link Type="JSONSource" URL="https://raw.githubusercontent.com/ajn142attamu/OSD/aced0d9d990a55ebfdae11b2bf1a6d0c03c12b14/Catalogs/MicrosoftSurfaceModels.json"></Link>
->>>>>>> c30f1c33e4cb3183adad19061a5a73c955fa8374
 		<Link Type="BaseURL" URL="https://aka.ms/"></Link>
 		<Link Type="SurfaceDriverSupportURL" URL="https://support.microsoft.com/tr-tr/surface/download-drivers-and-firmware-for-surface-09bb2e09-2a4b-cb69-0951-078a7739e120"></Link>
 	</Manufacturer>
