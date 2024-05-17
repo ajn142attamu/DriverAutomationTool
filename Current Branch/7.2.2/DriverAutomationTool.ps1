@@ -136,6 +136,7 @@ param (
 							Update our fork to use our OEMLinks.xml
 	7.2.2.3 - (2024-02-29)	Initial Support For W11-23H2
 	7.2.2.4 - (2024-02-29)  Fix for https://github.com/maurice-daly/DriverAutomationTool/issues/496 by adding entries for 22H2 and 23H2, updating path to softpaqs.
+	7.2.2.5 - (2024-05-17)	Resolves issue with Microsoft products containin + in the name, requires corresponding changes to Invoke-CMApplyDriverPackage.ps1 from ModernDriverManagement to work.
 	#>
 
 
@@ -15255,7 +15256,7 @@ AABJRU5ErkJgggs='))
 		
 		try {
 			
-			global:Write-LogEntry -Value "- BitsTransfer: Checking BITS background job" -Severity 1 -SkipGuiLog $true
+			global:Write-LogEntry -Value "- BitsTransfer: Checking BITS background job $($BitsJobName)" -Severity 1 -SkipGuiLog $true
 			
 			$BitsIssueCount = 0
 			$BitsJob = Get-BitsTransfer | Where-Object {
@@ -16798,6 +16799,7 @@ AABJRU5ErkJgggs='))
 						$DriverCab = $DriverDownload | Split-Path -Leaf
 						$DriverRevision = ($DriverCab.Split("_") | Select-Object -Last 1).Trim(".msi")
 						$global:SkuValue = $Model
+						$global:SkuValue = $global:SkuValue.Replace("\+","_")
 					}
 				}
 				
@@ -17390,6 +17392,9 @@ AABJRU5ErkJgggs='))
 								# Cater for Microsoft Surface model naming
 								if ($Model -match ":") {
 									$Model = $Model.Replace(":", "_")
+								}
+								if ($Model -match "\+") {
+									$Model = $Model.Replace("+", "_")
 								}
 								
 								If ($OSBuild -eq $null) {
@@ -18665,6 +18670,9 @@ AABJRU5ErkJgggs='))
 							$Model = $($CustomPkgDataGrid.Rows[$Row].Cells["Model"].Value)
 							if (![string]::IsNullOrEmpty($CustomPkgDataGrid.Rows[$Row].Cells["BaseBoard"].Value)) {
 								$SystemSKU = $($CustomPkgDataGrid.Rows[$Row].Cells["BaseBoard"].Value)
+								if ($SystemSKU -match "\+") {
+									$SystemSKU = $SystemSKU.Replace("+", "_")
+								}
 								if (-not ([string]::IsNullOrEmpty($CustomPkgPlatform.SelectedItem))) {
 									$Platform = $CustomPkgPlatform.SelectedItem
 									if ($CustomPkgType.Text -match "BIOS" -and $CustomPkgType.Enabled -eq $true) {

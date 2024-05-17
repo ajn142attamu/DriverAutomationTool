@@ -131,6 +131,7 @@ All source code and installers will be maintained here from 11-March-2020.
 							Update our fork to use our OEMLinks.xml
 	7.2.2.3 - (2024-02-29)	Initial Support For W11-23H2
 	7.2.2.4 - (2024-02-29)  Fix for https://github.com/maurice-daly/DriverAutomationTool/issues/496 by adding entries for 22H2 and 23H2, updating path to softpaqs.
+	7.2.2.5 - (2024-05-17)	Resolves issue with Microsoft products containin + in the name, requires corresponding changes to Invoke-CMApplyDriverPackage.ps1 from ModernDriverManagement to work.
 	7.2.3.1 - (2024-03-12)	Merged previous customizations into 7.2.3
 							Fixed reintroduced bug with incorrect build numbers in $WindowsBuildHashTable
 				
